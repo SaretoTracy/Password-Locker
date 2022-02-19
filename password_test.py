@@ -1,4 +1,3 @@
-from typing_extensions import Self
 import unittest # Importing the unittest module
 from user import User
 class TestUser(unittest.TestCase): #subclass class that inherits from unittest.TestCase
