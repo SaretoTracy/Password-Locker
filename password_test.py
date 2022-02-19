@@ -1,6 +1,6 @@
 import unittest # Importing the unittest module
 from user import User
-class TestContact(unittest.TestCase): #subclass class that inherits from unittest.TestCase
+class TestUser(unittest.TestCase): #subclass class that inherits from unittest.TestCase
 
     '''
     Test class that defines test cases for the contact class behaviours.
@@ -12,7 +12,7 @@ class TestContact(unittest.TestCase): #subclass class that inherits from unittes
         '''
         Set up method to run before each test cases.
         '''
-        self.new_user = User("Tracy","Sareto","Tate","Tracy@2022") # create contact object
+        self.new_user = User("Tracy","Sareto","Tate","Tracy@2022") # create user object
 
 
     def test_init(self):
