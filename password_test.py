@@ -25,10 +25,21 @@ class TestUser(unittest.TestCase): #subclass class that inherits from unittest.T
         self.assertEqual(self.new_user.username,"Tate")
         self.assertEqual(self.new_user.password,"Tracy@2022")
 
-    def save_user(self):
+    def save_user(self): #second test
         ''' test case to test if user objects is saved in UserList'''  
         self.new_user.save_user() 
         self.assertEqual(len(User.UserList),1) 
+
+    def test_save_multiple_user(self): #third test
+            '''
+            test_save_multiple_user to check if we can save multiple user
+            objects to our UserList
+            '''
+            self.new_user.save_user()
+            test_user = User("Test","user","0712345678","test@user.com") # new user
+            test_user.save_user()
+            self.assertEqual(len(User.user_list),2)
+    
 if __name__ == '__main__':
     unittest.main()
 
