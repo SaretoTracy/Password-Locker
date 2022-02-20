@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from click import option
 from user import User
-# functions that implement the behaviours we have created
+# functions that implement the behaviours we have created in user
 def create_user(first_name,last_name,username,password):
     '''
     Function to create a new user
@@ -38,6 +38,9 @@ def display_user():
     Function that returns all the saved users
     '''
     return User.display_user()
+    
+# functions that implement the behaviours we have created in credentials
+
 
 def main(): #main function that calls all the other function
     print("Hello Welcome to your password-locker. Write Signup or Login to start")
