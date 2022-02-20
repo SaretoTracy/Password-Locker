@@ -53,11 +53,11 @@ def save_credentials(Credentials):
     '''
     Credentials.save_credentials()
 
-def delete_credentials(Credentials):
+def delete_credentials():
     '''
     Function to delete a user
     '''
-    Credentials.delete_account()
+    Credentials.delete_credentials()
 
 def find_account(account_name):
     '''
@@ -84,7 +84,7 @@ def main(): #main function that calls all the other function
         print("signup -or- login")
         option = input()
         
-        if option == "Signup":
+        if option == "signup":
                 print("Create an account")
                 print("*️⃣" *10)
                 print("Enter your First name")
@@ -105,7 +105,7 @@ def main(): #main function that calls all the other function
                 print("🔒" *10)
                 #    print("Signup -or- Login")
                 #    option = input()
-        elif option == "Login":
+        elif option == "login":
                 print("Enter your Username")
                 username=input()
                 print("Enter you user password")
@@ -133,12 +133,34 @@ def main(): #main function that calls all the other function
                 
         elif choice == "VA":
              if find_account(account_name):
+                print("\n")
                 print("Here is a list pf your Account")
+                print("\n")
                 print("🔐" *10)
+                print("\n")
                 for Credentials in display_credentials():
                     print(f"{Credentials.account_name} \n{Credentials.account_username} \n{Credentials.account_password}")
+                    print("\n")
+                    print("🔐" *10)
              else:
                 print("That account does not exist")
+
+        elif choice == 'DA':
+             print('Enter the account name you want to delete')
+             account_deleted = input()
+             if delete_credentials(account_deleted):
+                account_to_be_deleted = delete_credentials(account_deleted)
+                print(f"Account Name: {account_to_be_deleted.account_name}")
+                print('Account has been succesfully deleted')
+             else:
+                print('The account does not exist')
+
+        #exit app
+        elif choice == 'ex':
+             print('Thank you for considering our service. Goodbye for now see you later!')
+             break
+        else:
+             print('I really didnt get that. Please use the short codes')
 
                     
 
