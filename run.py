@@ -80,8 +80,8 @@ def display_credentials():
 
 def main(): #main function that calls all the other function
     while True:
-        print("Hello Welcome to your password-locker. Write Signup or Login to start")
-        print("Signup -or- Login")
+        print("Hello Welcome to your password-locker. Write signup or login to start")
+        print("signup -or- login")
         option = input()
         
         if option == "Signup":
@@ -112,7 +112,7 @@ def main(): #main function that calls all the other function
                 password=input()
         if find_user(password):
                 print("🔓" *10)
-                print(" You can create multiple credential account (CA) or view your accounts(VA), or display account(DA)")
+                print(" You can create multiple credential account (CA) or view your accounts(VA), or delete account(DA)")
                 choice= input()
         if choice == "CA":
             print("Create Credential account")
@@ -136,7 +136,7 @@ def main(): #main function that calls all the other function
                 print("Here is a list pf your Account")
                 print("🔐" *10)
                 for Credentials in display_credentials():
-                    print(f"{Credentials.account_name}")
+                    print(f"{Credentials.account_name} \n{Credentials.account_username} \n{Credentials.account_password}")
              else:
                 print("That account does not exist")
 
