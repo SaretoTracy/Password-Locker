@@ -69,8 +69,8 @@ class TestUser(unittest.TestCase): #subclass class that inherits from unittest.T
         test_user = User("Tracy","Sareto","Tate","Tracy@2022") # new user
         test_user.save_user()
 
-        found_user = User.find_by_password("Tracy@2022")
-        self.assertEqual(found_user.password,test_user.password)  
+        find_user = User.find_by_password("Tracy@2022")
+        self.assertEqual(find_user.password,test_user.password)  
     def test_user_exists(self):
         '''
         test to check if we can return a Boolean  if we cannot find the user.

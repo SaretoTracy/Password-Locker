@@ -4,13 +4,13 @@ class Credentials:
     """
     Accountlist= [] #empty credential list
     
-def __init__ (self,account_name,account_username,account_password):
+    def __init__ (self,account_name,account_username,account_password):
         self.account_name = account_name
         self.account_username = account_username
         self.account_password = account_password
 
 
-def save_credentials(self):
+    def save_credentials(self):
 
         '''
         test case to test if accounts objects is saved in accountlist
@@ -18,7 +18,7 @@ def save_credentials(self):
 
         Credentials.Accountlist.append(self)
 
-def delete_credentials(self):
+    def delete_credentials(self):
 
         '''
         delete_credentials method deletes a saved credential from the accountlist
