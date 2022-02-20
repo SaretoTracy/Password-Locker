@@ -59,11 +59,11 @@ def delete_credentials(Credentials):
     '''
     Credentials.delete_account()
 
-def find_account(account_password):
+def find_account(account_name):
     '''
     Function that finds a user by password and returns the user
     '''
-    return Credentials.find_by_account_password(account_password)
+    return Credentials.find_by_account_name(account_name)
 
 def check_existing_account(account_username):
     '''
@@ -114,29 +114,30 @@ def main(): #main function that calls all the other function
                 print("🔓" *10)
                 print(" You can create multiple credential account (CA) or view your accounts(VA), or display account(DA)")
                 choice= input()
-                if choice == "CA":
-                    print("Create Credential account")
-                    print("*️⃣4️" *10)
-                    print("Enter your account_name")
-                    account_name=input()
-                    print("Enter your  account_username")
-                    account_username=input()
-                    print("Enter your password")
-                    account_password=input()
-                    print("🔒" *10)
+        if choice == "CA":
+            print("Create Credential account")
+            print("*️⃣4️" *10)
+            print("Enter your account_name")
+            account_name=input()
+            print("Enter your  account_username")
+            account_username=input()
+            print("Enter your password")
+            account_password=input()
+            print("🔒" *10)
 
-                    save_credentials(create_account(account_name,account_username,account_password))
-                    print("Your accout was succesfully created.These are you details")
-                    
-                    print(f"AccountName:{account_name} \nAccountUsername: {account_username} \nAccount_Password:{account_password}")
+            save_credentials(create_account(account_name,account_username,account_password))
+            print("Your accout was succesfully created.These are you details")
+            
+            print(f"AccountName:{account_name} \nAccountUsername: {account_username} \nAccount_Password:{account_password}")
 
                 
-                elif choice == "VA":
-                    if find_account(account_name):
-                       print("Here is a list pf your Account")
-                       print("🔐" *10)
-                       for Credentials in display_credentials():
-                           print(f"{Credentials.account_name}")
+        elif choice == "VA":
+             if find_account(account_name):
+                print("Here is a list pf your Account")
+                print("🔐" *10)
+                for Credentials in display_credentials():
+                    print(f"{Credentials.account_name}")
+
                     
 
                 

@@ -28,18 +28,18 @@ class Credentials:
     
 
 @classmethod
-def find_by_account_password(cls,account_password):
+def find_by_account_name(cls,account_name):
         '''
-        Method that takes in a account_password and returns a account that matches that account_password.
+        Method that takes in a account_name and returns a account that matches that account_name.
 
         Args:
-            account_password: user account_password to search for
+            account_name: user account_name to search for
         Returns :
-            user of person that matches the account_password.
+            user of person that matches the account_name.
         '''
 
         for credentials in cls.Accountlist:
-            if credentials.account_password == account_password:
+            if credentials.account_name == account_name:
                 return credentials
 @classmethod           
 def account_exist(cls,account_username):
