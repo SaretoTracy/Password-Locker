@@ -130,8 +130,14 @@ def main(): #main function that calls all the other function
                     
                     print(f"AccountName:{account_name} \nAccountUsername: {account_username} \nAccount_Password:{account_password}")
 
-                else:
-                        print("That Account does not exist")
+                
+                elif choice == "VA":
+                    if find_account(account_name):
+                       print("Here is a list pf your Account")
+                       print("🔐" *10)
+                       for Credentials in display_credentials():
+                           print(f"{Credentials.account_name}")
+                    
 
                 
 
