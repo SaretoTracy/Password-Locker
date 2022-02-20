@@ -86,7 +86,7 @@ def main(): #main function that calls all the other function
         
         if option == "Signup":
                 print("Create an account")
-                print("*️⃣4️" *10)
+                print("*️⃣" *10)
                 print("Enter your First name")
                 first_name=input()
                 print("Enter your Last name")
@@ -112,8 +112,7 @@ def main(): #main function that calls all the other function
                 password=input()
         if find_user(password):
                 print("🔓" *10)
-                print(" You can create multiple credential account (CA) or view your accounts(VA)")
-                print("CA -or- VA")
+                print(" You can create multiple credential account (CA) or view your accounts(VA), or display account(DA)")
                 choice= input()
                 if choice == "CA":
                     print("Create Credential account")
@@ -130,6 +129,9 @@ def main(): #main function that calls all the other function
                     print("Your accout was succesfully created.These are you details")
                     
                     print(f"AccountName:{account_name} \nAccountUsername: {account_username} \nAccount_Password:{account_password}")
+
+                else:
+                        print("That Account does not exist")
 
                 
 
