@@ -7,7 +7,15 @@ class TestUser(unittest.TestCase): #subclass class that inherits from unittest.T
 
     Args:
         unittest.TestCase: TestCase class that helps in creating test cases
+
     '''
+
+    def tearDown(self):
+            '''
+            tearDown method that does clean up after each test case has run.
+            '''
+            User.UserList = []
+
     def setUp(self): #first test, test to see if our objects are being instantiated correctly.
         '''
         Set up method to run before each test cases.

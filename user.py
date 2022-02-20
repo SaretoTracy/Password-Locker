@@ -3,10 +3,6 @@ class User:
     Class that generates new instances of user
     """
 
-    def tearDown(self): # executes a set of instructions after every test.
-            '''
-            tearDown method that does clean up after each test case has run.
-            '''
 
     UserList = [] #empty user list
     
@@ -23,5 +19,13 @@ class User:
         '''
 
         User.UserList.append(self)
+
+    def delete_user(self):
+
+        '''
+        delete_user method deletes a saved user from the userlist
+        '''
+
+        User.UserList.remove(self)
 
     
