@@ -84,6 +84,13 @@ class TestUser(unittest.TestCase): #subclass class that inherits from unittest.T
         self.assertTrue(user_exists) 
          
 
+    def test_display_all_user(self):
+        '''
+        method that returns a list of all user saved
+        '''
+
+        self.assertEqual(User.display_user(),User.UserList)    
+
 
     
 if __name__ == '__main__':

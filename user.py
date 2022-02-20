@@ -57,4 +57,12 @@ class User:
                     return True
 
         return False
+
+    @classmethod
+    def display_user(cls):
+        '''
+        method that returns the UserList
+        '''
+        return cls.UserList
+    
     
