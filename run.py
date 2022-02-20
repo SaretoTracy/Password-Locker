@@ -18,4 +18,22 @@ def delete_user(user):
     '''
     Function to delete a user
     '''
-    user.delete_user()
+    User.delete_user()
+
+def find_user(password):
+    '''
+    Function that finds a user by password and returns the user
+    '''
+    return User.find_by_password(password)
+
+def check_existing_user(username):
+    '''
+    Function that check if a user exists with that username and return a Boolean
+    '''
+    return User.user_exist(username)
+
+def display_user():
+    '''
+    Function that returns all the saved users
+    '''
+    return User.display_users()
