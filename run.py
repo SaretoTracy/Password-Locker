@@ -63,7 +63,7 @@ def find_account(account_name):
     '''
     Function that finds a user by password and returns the user
     '''
-    return Credentials.find_by_account_name(account_name)
+    return Credentials.find_by_account_name (account_name)
 
 def check_existing_account(account_username):
     '''
@@ -137,6 +137,8 @@ def main(): #main function that calls all the other function
                 print("🔐" *10)
                 for Credentials in display_credentials():
                     print(f"{Credentials.account_name}")
+             else:
+                print("That account does not exist")
 
                     
 

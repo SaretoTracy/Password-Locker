@@ -22,10 +22,10 @@ class TestCredentials(unittest.TestCase):
         Test case to check if we can find an account by username and display information
         '''
         self.new_credentials.save_credentials()
-        test_account = Credentials('Pintres', 'pepe', 'pipi')
+        test_account = Credentials("Pintres", "pepe", "pipi")
         test_account.save_credentials()
 
-        found_account = Credentials.find_by_account_name("pepe")
+        found_account = Credentials.find_by_account_name('pepe')
         self.assertEqual(found_account.account_name,test_account.account_name)
 
 class TestUser(unittest.TestCase): #subclass class that inherits from unittest.TestCase
