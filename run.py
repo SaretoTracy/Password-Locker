@@ -81,11 +81,21 @@ def display_credentials():
     return Credentials.display_credentials()
 
 def generate_password():
-    '''
-    Function that returns all the saved users
-    '''
-    return Credentials.generate_password()
-
+        '''
+        Function to generate a random password
+        '''
+        password_list = []
+        characters_upper = 'abcdefghijklmnopqrstuvwxyz'.upper()
+        characters_lower = 'abcdefghijklmnopqrstuvwxyz'.lower()
+        numbers = '0123456789'
+        symbols = '!@#$%&*'
+        for i in range(3):
+            password_list.append(random.choice(characters_upper))
+            password_list.append(random.choice(characters_lower))
+            password_list.append(random.choice(numbers))
+            password_list.append(random.choice(symbols))
+        passwordgen = ''.join(password_list)
+        return passwordgen
 
 def main(): #main function that calls all the other function
     while True:
@@ -140,15 +150,15 @@ def main(): #main function that calls all the other function
                         print("Generate new password (G) Create new passord (C)")
                         action =input()
                         if action == "G":
-                            passwordgen = generate_password()
-                            print("Your password is: " + passwordgen)
+                           passwordgen = generate_password(passwordgen)
+                           print("Your password is: " + passwordgen)
                         elif action=="C":
                             print("Enter your password")
                             account_password=input()
                             print("\n")
                             print("🔒" *20)
 
-                        save_credentials(create_account(account_name,account_username,account_password))
+                        # save_credentials(create_account(account_name,account_username,account_password))
                         print("Your accout was succesfully created.These are you details")
                         
                         print(f"AccountName:{account_name} \nAccountUsername: {account_username} \nAccount_Password:{account_password}")
