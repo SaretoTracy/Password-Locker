@@ -31,7 +31,7 @@ class Credentials:
     
 
     @classmethod
-    def find_by_account_name(cls,account_name):
+    def find_by_account_name(cls,account_username):
             '''
             Method that takes in a account_name and returns a account that matches that account_name.
 
@@ -41,9 +41,9 @@ class Credentials:
                 user of person that matches the account_name.
             '''
 
-            for credentials in cls.Accountlist:
-                if credentials.account_name == account_name:
-                    return credentials
+            for credential in cls.Accountlist:
+                if credential.account_username == account_username:
+                    return credential
 
     
 
@@ -56,7 +56,7 @@ class Credentials:
             Returns :
                 Boolean: True or false depending if the account exists
             '''
-            for credentials in cls.Accoubtlist:
+            for credentials in cls.Accountlist:
                 if credentials.account_username == account_username:
                         return True
 

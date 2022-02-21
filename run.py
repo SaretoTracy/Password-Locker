@@ -62,11 +62,11 @@ def delete_credentials(Credentials):
     '''
     Credentials.delete_credentials()
 
-def find_account(account_name):
+def find_account(account_username):
     '''
     Function that finds a user by password and returns the user
     '''
-    return Credentials.find_by_account_name (account_name)
+    return Credentials.find_by_account_name (account_username)
 
 def check_existing_account(account_username):
     '''
@@ -136,7 +136,7 @@ def main(): #main function that calls all the other function
                 
                 print("🔓" *20)
                 while True:
-                    print(" You can create multiple credential account (CA) \n view your accounts(VA) \n delete account(DA) \n exit account (EXT")
+                    print(" You can create multiple credential account (CA) \n view your accounts(VA) \nfind account(FA) \n delete account(DA) \n exit account (EXT")
                     choice= input()
                     if choice == "CA":
                         print("Create Credential account")
@@ -179,6 +179,18 @@ def main(): #main function that calls all the other function
                                 print("🔐" *20)
                         else:
                             print("That account does not exist")
+
+                    elif choice == 'FA':
+                        print('Enter the ACCOUNT name you want to search for')
+                        account_username = input()
+                        if check_existing_account(account_username):
+                            search_account = find_account(account_username)
+                            print(f"{account_name} {account_username} {account_password}")
+                            print('-'*20)
+                            print(f"Account name: {search_account.account_name}")
+                            print(f"Account username: {search_account.account_username}")
+                        else:
+                                print("That account does not exist")
 
                     elif choice == 'DA':
                         
