@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-from sqlalchemy import true
 from credentials  import Credentials
 from user import User
 import random
@@ -62,11 +61,11 @@ def delete_credentials(Credentials):
     '''
     Credentials.delete_credentials()
 
-def find_account(account_username):
+def find_account(account_name):
     '''
     Function that finds a user by password and returns the user
     '''
-    return Credentials.find_by_account_name (account_username)
+    return Credentials.find_by_account_name (account_name)
 
 def check_existing_account(account_username):
     '''
@@ -150,18 +149,23 @@ def main(): #main function that calls all the other function
                         print("Generate new password (G) Create new passord (C)")
                         action =input()
                         if action == "G":
-                           passwordgen = generate_password(passwordgen)
+                           passwordgen = generate_password()
+                           print("🔒" *5)
                            print("Your password is: " + passwordgen)
+                           print("🔒" *5)
+                           save_credentials(create_account(account_name,account_username,passwordgen))
+                           
                         elif action=="C":
                             print("Enter your password")
                             account_password=input()
                             print("\n")
                             print("🔒" *20)
 
-                        # save_credentials(create_account(account_name,account_username,account_password))
+                            save_credentials(create_account(account_name,account_username,account_password))
+                            print("\n")
                         print("Your accout was succesfully created.These are you details")
                         
-                        print(f"AccountName:{account_name} \nAccountUsername: {account_username} \nAccount_Password:{account_password}")
+                        # print(f"AccountName:{account_name} \nAccountUsername: {account_username} \nAccount_Password:{account_password}")
 
                             
                     elif choice == "VA":
@@ -182,9 +186,9 @@ def main(): #main function that calls all the other function
 
                     elif choice == 'FA':
                         print('Enter the ACCOUNT name you want to search for')
-                        account_username = input()
-                        if check_existing_account(account_username):
-                            search_account = find_account(account_username)
+                        account_name = input()
+                        if check_existing_account(account_name):
+                            search_account = find_account(account_name)
                             print(f"{account_name} {account_username} {account_password}")
                             print('-'*20)
                             print(f"Account name: {search_account.account_name}")
