@@ -77,6 +77,12 @@ def display_credentials():
     '''
     return Credentials.display_credentials()
 
+def generate_password():
+    '''
+    Function that returns all the saved users
+    '''
+    return Credentials.generate_password()
+
 
 def main(): #main function that calls all the other function
     while True:

@@ -1,3 +1,6 @@
+import random
+import string
+
 class Credentials:
     """
     Class that generates new instances of credentials
@@ -41,6 +44,23 @@ class Credentials:
             for credentials in cls.Accountlist:
                 if credentials.account_name == account_name:
                     return credentials
+
+    @classmethod
+    def generate_password(cls):
+        '''
+        Method that generates a random alphanumeric password
+        '''
+        # Length of the generated password
+        size = 8
+
+        # Generate random alphanumeric 
+        alphanum = string.ascii_uppercase + string.digits + string.ascii_lowercase
+
+        # Create password
+        passwordgen = ''.join( random.choice(alphanum) for num in range(size) )
+        
+        return passwordgen
+
     @classmethod           
     def account_exist(cls,account_username):
             '''
