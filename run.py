@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from sqlalchemy import true
 from credentials  import Credentials
 from user import User
 import random
@@ -79,11 +80,11 @@ def display_credentials():
     '''
     return Credentials.display_credentials()
 
-def generate_password(cls):
+def generate_password():
     '''
     Function that returns all the saved users
     '''
-    return Credentials.generate_password(cls)
+    return Credentials.generate_password()
 
 
 def main(): #main function that calls all the other function
@@ -121,77 +122,76 @@ def main(): #main function that calls all the other function
                 username=input()
                 print("Enter you user password")
                 password=input()
-        if find_user(password):
+        
                 
                 print("🔓" *20)
-                print(" You can create multiple credential account (CA) \n view your accounts(VA) \n delete account(DA) \n exit account (EXT")
-                choice= input()
-        if choice == "CA":
-            print("Create Credential account")
-            print("🔒" *20)
-            print("\n")
-            print("Enter your account_name")
-            account_name=input()
-            print("Enter your  account_username")
-            account_username=input()
-            print("\n")
-            print("Generate new password (G) Create new passord (C)")
-            action =input()
-            if action == "G":
-                size=8
-                alphanum = string.ascii_uppercase + string.digits + string.ascii_lowercase
-                passwordgen = " ".join( choice(alphanum) for num in range(size) )
-                print(f"Password:{passwordgen}")
-            elif action=="C":
-                print("Enter your password")
-                account_password=input()
-                print("\n")
-                print("🔒" *20)
+                while True:
+                    print(" You can create multiple credential account (CA) \n view your accounts(VA) \n delete account(DA) \n exit account (EXT")
+                    choice= input()
+                    if choice == "CA":
+                        print("Create Credential account")
+                        print("🔒" *20)
+                        print("\n")
+                        print("Enter your account_name")
+                        account_name=input()
+                        print("Enter your  account_username")
+                        account_username=input()
+                        print("\n")
+                        print("Generate new password (G) Create new passord (C)")
+                        action =input()
+                        if action == "G":
+                            passwordgen = generate_password()
+                            print("Your password is: " + passwordgen)
+                        elif action=="C":
+                            print("Enter your password")
+                            account_password=input()
+                            print("\n")
+                            print("🔒" *20)
 
-            save_credentials(create_account(account_name,account_username,account_password))
-            print("Your accout was succesfully created.These are you details")
-            
-            print(f"AccountName:{account_name} \nAccountUsername: {account_username} \nAccount_Password:{account_password}")
+                        save_credentials(create_account(account_name,account_username,account_password))
+                        print("Your accout was succesfully created.These are you details")
+                        
+                        print(f"AccountName:{account_name} \nAccountUsername: {account_username} \nAccount_Password:{account_password}")
 
-                
-        elif choice == "VA":
-             print("Enter account you want to view")
-             if display_credentials():
-                print("\n")
-                
-                for Credential in display_credentials():
-                    print("Here is a list pf your Account")
-                    print("\n")
-                    print("🔐" *20)
-                    print("\n")
-                    print(f"{Credential.account_name} \n{Credential.account_username} \n{Credential.account_password}")
-                    print("\n")
-                    print("🔐" *20)
-             else:
-                print("That account does not exist")
+                            
+                    elif choice == "VA":
+                        print("Enter account you want to view")
+                        if display_credentials():
+                            print("\n")
+                            
+                            for Credential in display_credentials():
+                                print("Here is a list pf your Account")
+                                print("\n")
+                                print("🔐" *20)
+                                print("\n")
+                                print(f"{Credential.account_name} \n{Credential.account_username} \n{Credential.account_password}")
+                                print("\n")
+                                print("🔐" *20)
+                        else:
+                            print("That account does not exist")
 
-        elif choice == 'DA':
-            
-              print("Enter the account name you want to delete:")
-              account_name = input()
-              if find_account(account_name):
-                 delete_credentials(find_account(account_name))
-                 print(f"{account_name} account has been deleted")
-                 print('\n')
-              else:
-                  print("That credential does not exist")
-                  print('\n')
+                    elif choice == 'DA':
+                        
+                        print("Enter the account name you want to delete:")
+                        account_name = input()
+                        if find_account(account_name):
+                            delete_credentials(find_account(account_name))
+                            print(f"{account_name} account has been deleted")
+                            print('\n')
+                        else:
+                            print("That credential does not exist")
+                            print('\n')
 
-        #exit app
-        elif choice == 'EXT':
-             print('Thank you for considering our service. Goodbye for now see you later!')
-             break
-        else:
-             print('I really didnt get that. Please use the short codes')
+                    #exit app
+                    elif choice == 'EXT':
+                        print('Thank you for considering our service. Goodbye for now see you later!')
+                        break
+                    else:
+                        print('I really didnt get that. Please use the short codes')
 
-                    
+                                
 
-                
+                            
 
 
    
