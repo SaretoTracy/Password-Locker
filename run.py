@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-from ast import While
 from credentials  import Credentials
 from user import User
 import random
@@ -125,9 +124,8 @@ def main(): #main function that calls all the other function
         if find_user(password):
                 
                 print("🔓" *20)
-                while True:
-                  print(" You can create multiple credential account (CA) \n view your accounts(VA) \n delete account(DA) \n exit account (EXT")
-                  choice= input()
+                print(" You can create multiple credential account (CA) \n view your accounts(VA) \n delete account(DA) \n exit account (EXT")
+                choice= input()
         if choice == "CA":
             print("Create Credential account")
             print("🔒" *20)
@@ -173,14 +171,16 @@ def main(): #main function that calls all the other function
                 print("That account does not exist")
 
         elif choice == 'DA':
-             print('Enter the account name you want to delete')
-             account_deleted = input()
-             if delete_credentials(account_deleted):
-                account_to_be_deleted = delete_credentials(account_deleted)
-                print(f"Account Name: {account_to_be_deleted.account_name}")
-                print('Account has been succesfully deleted')
-             else:
-                print('The account does not exist')
+            
+              print("Enter the account name you want to delete:")
+              account_name = input()
+              if find_account(account_name):
+                 delete_credentials(find_account(account_name))
+                 print(f"{account_name} account has been deleted")
+                 print('\n')
+              else:
+                  print("That credential does not exist")
+                  print('\n')
 
         #exit app
         elif choice == 'EXT':
