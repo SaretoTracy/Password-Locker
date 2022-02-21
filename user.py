@@ -43,6 +43,9 @@ class User:
         for user in cls.UserList:
             if user.password == password:
                 return user
+            else:
+               print("Wrong password")
+               return False
     @classmethod           
     def user_exist(cls,username):
         '''

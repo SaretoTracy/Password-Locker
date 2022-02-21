@@ -53,7 +53,7 @@ def save_credentials(Credentials):
     '''
     Credentials.save_credentials()
 
-def delete_credentials():
+def delete_credentials(Credentials):
     '''
     Function to delete a user
     '''
@@ -102,27 +102,30 @@ def main(): #main function that calls all the other function
                 
                 print(f"Name:{first_name} {last_name} \nUsername: {username} \nPassword: {password}")
                 print("Login into your account with these details")
+                print("\n")
+
                 print("🔒" *10)
-                #    print("Signup -or- Login")
-                #    option = input()
         elif option == "login":
                 print("Enter your Username")
                 username=input()
                 print("Enter you user password")
                 password=input()
         if find_user(password):
+                print("\n")
                 print("🔓" *10)
-                print(" You can create multiple credential account (CA) or view your accounts(VA), or delete account(DA)")
+                print(" You can create multiple credential account (CA) \n view your accounts(VA) \n delete account(DA) \n exit account (EXT")
                 choice= input()
         if choice == "CA":
             print("Create Credential account")
             print("*️⃣4️" *10)
+            print("\n")
             print("Enter your account_name")
             account_name=input()
             print("Enter your  account_username")
             account_username=input()
             print("Enter your password")
             account_password=input()
+            print("\n")
             print("🔒" *10)
 
             save_credentials(create_account(account_name,account_username,account_password))
@@ -156,7 +159,7 @@ def main(): #main function that calls all the other function
                 print('The account does not exist')
 
         #exit app
-        elif choice == 'ex':
+        elif choice == 'EXT':
              print('Thank you for considering our service. Goodbye for now see you later!')
              break
         else:
