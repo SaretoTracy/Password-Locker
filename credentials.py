@@ -57,7 +57,7 @@ class Credentials:
         alphanum = string.ascii_uppercase + string.digits + string.ascii_lowercase
 
         # Create password
-        passwordgen = ''.join( random.choice(alphanum) for num in range(size) )
+        passwordgen = "".join( random.choice(alphanum) for num in range(size) )
         
         return passwordgen
 

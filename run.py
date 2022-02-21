@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 from credentials  import Credentials
 from user import User
+import random
+import string
 # functions that implement the behaviours we have created in user
 def create_user(first_name,last_name,username,password):
     '''
@@ -71,17 +73,17 @@ def check_existing_account(account_username):
     '''
     return Credentials.account_exist(account_username)
 
-def display_credentials():
+def display_credentials(account_name):
     '''
     Function that returns all the saved users
     '''
-    return Credentials.display_credentials()
+    return Credentials.display_credentials(account_name)
 
-def generate_password():
+def generate_password(cls):
     '''
     Function that returns all the saved users
     '''
-    return Credentials.generate_password()
+    return Credentials.generate_password(cls)
 
 
 def main(): #main function that calls all the other function
@@ -92,7 +94,8 @@ def main(): #main function that calls all the other function
         
         if option == "signup":
                 print("Create an account")
-                print("*️⃣" *10)
+        
+                print("🔒" *20)
                 print("Enter your First name")
                 first_name=input()
                 print("Enter your Last name")
@@ -101,38 +104,49 @@ def main(): #main function that calls all the other function
                 username=input()
                 print("Set your password")
                 password=input()
-                print("🔒" *10)
+                print("\n")
+                
 
                 save_user(create_user(first_name, last_name, username, password))
                 print("Your accout was succesfully created.These are you details")
+                print("🔒" *20)
                 
                 print(f"Name:{first_name} {last_name} \nUsername: {username} \nPassword: {password}")
                 print("Login into your account with these details")
-                print("\n")
+                
 
-                print("🔒" *10)
+                print("🔒" *20)
         elif option == "login":
                 print("Enter your Username")
                 username=input()
                 print("Enter you user password")
                 password=input()
         if find_user(password):
-                print("\n")
-                print("🔓" *10)
+                
+                print("🔓" *20)
                 print(" You can create multiple credential account (CA) \n view your accounts(VA) \n delete account(DA) \n exit account (EXT")
                 choice= input()
         if choice == "CA":
             print("Create Credential account")
-            print("*️⃣4️" *10)
+            print("🔒" *20)
             print("\n")
             print("Enter your account_name")
             account_name=input()
             print("Enter your  account_username")
             account_username=input()
-            print("Enter your password")
-            account_password=input()
             print("\n")
-            print("🔒" *10)
+            print("Generate new password (G) Create new passord (C)")
+            action =input()
+            if action == "G":
+                size=8
+                alphanum = string.ascii_uppercase + string.digits + string.ascii_lowercase
+                passwordgen = " ".join( choice(alphanum) for num in range(size) )
+                print(f"Password:{passwordgen}")
+            elif action=="C":
+                print("Enter your password")
+                account_password=input()
+                print("\n")
+                print("🔒" *20)
 
             save_credentials(create_account(account_name,account_username,account_password))
             print("Your accout was succesfully created.These are you details")
@@ -141,16 +155,19 @@ def main(): #main function that calls all the other function
 
                 
         elif choice == "VA":
-             if find_account(account_name):
+             print("Enter account you want to view")
+             account_name=input
+             if display_credentials(account_name):
                 print("\n")
-                print("Here is a list pf your Account")
-                print("\n")
-                print("🔐" *10)
-                print("\n")
-                for Credentials in display_credentials():
+                
+                for Credentials in display_credentials(account_name):
+                    print("Here is a list pf your Account")
+                    print("\n")
+                    print("🔐" *20)
+                    print("\n")
                     print(f"{Credentials.account_name} \n{Credentials.account_username} \n{Credentials.account_password}")
                     print("\n")
-                    print("🔐" *10)
+                    print("🔐" *20)
              else:
                 print("That account does not exist")
 
