@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from ast import While
 from credentials  import Credentials
 from user import User
 import random
@@ -73,11 +74,11 @@ def check_existing_account(account_username):
     '''
     return Credentials.account_exist(account_username)
 
-def display_credentials(account_name):
+def display_credentials():
     '''
     Function that returns all the saved users
     '''
-    return Credentials.display_credentials(account_name)
+    return Credentials.display_credentials()
 
 def generate_password(cls):
     '''
@@ -124,8 +125,9 @@ def main(): #main function that calls all the other function
         if find_user(password):
                 
                 print("🔓" *20)
-                print(" You can create multiple credential account (CA) \n view your accounts(VA) \n delete account(DA) \n exit account (EXT")
-                choice= input()
+                while True:
+                  print(" You can create multiple credential account (CA) \n view your accounts(VA) \n delete account(DA) \n exit account (EXT")
+                  choice= input()
         if choice == "CA":
             print("Create Credential account")
             print("🔒" *20)
@@ -156,16 +158,15 @@ def main(): #main function that calls all the other function
                 
         elif choice == "VA":
              print("Enter account you want to view")
-             account_name=input
-             if display_credentials(account_name):
+             if display_credentials():
                 print("\n")
                 
-                for Credentials in display_credentials(account_name):
+                for Credential in display_credentials():
                     print("Here is a list pf your Account")
                     print("\n")
                     print("🔐" *20)
                     print("\n")
-                    print(f"{Credentials.account_name} \n{Credentials.account_username} \n{Credentials.account_password}")
+                    print(f"{Credential.account_name} \n{Credential.account_username} \n{Credential.account_password}")
                     print("\n")
                     print("🔐" *20)
              else:
